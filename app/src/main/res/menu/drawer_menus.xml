@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_images"
+            android:checked="true"
+            android:icon="@drawable/ic_list_images"
+            android:title="Images"/>
+
+        <item
+            android:id="@+id/nav_uploadnew"
+            android:icon="@drawable/ic_add_a_photo"
+            android:title="Upload New"/>
+
+        <item
+            android:id="@+id/nav_contacts"
+            android:icon="@drawable/ic_contacts"
+            android:title="Contacts"/>
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_map"
+            android:title="Map"/>
+
+
+
+    </group>
+</menu>
