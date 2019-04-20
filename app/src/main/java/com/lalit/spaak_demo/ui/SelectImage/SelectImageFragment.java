@@ -2,12 +2,14 @@ package com.lalit.spaak_demo.ui.SelectImage;
 
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.content.CursorLoader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,13 +20,12 @@ import android.widget.ImageView;
 import com.lalit.spaak_demo.R;
 import com.lalit.spaak_demo.di.component.ActivityComponent;
 import com.lalit.spaak_demo.ui.Base.BaseFragment;
-import com.lalit.spaak_demo.ui.ImageList.ImageListFragment;
-import com.lalit.spaak_demo.ui.ImageList.ImageListMvpPresenter;
-import com.lalit.spaak_demo.ui.ImageList.ImageListMvpView;
 
 import java.io.IOException;
 
 import javax.inject.Inject;
+
+import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -39,6 +40,8 @@ public class SelectImageFragment extends BaseFragment implements SelectImageMvpV
 
     Button select_image , upload;
     ImageView selected_image ;
+    String SelectedImagePath ;
+    Uri selectedUri ;
 
 
     public SelectImageFragment() {
@@ -82,26 +85,23 @@ public class SelectImageFragment extends BaseFragment implements SelectImageMvpV
        select_image.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               startActivityForResult(galleryIntent, 1000);
+               Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+               startActivityForResult(i, 100);
            }
        });
 
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mPresenter.UploadImage(SelectedImagePath, getActivity());
 
             }
         });
 
 
+
         return view;
     }
-
-//    @OnClick(R.id.nav_back_btn)
-//    void onNavBackClick() {
-//        getBaseActivity().onFragmentDetached(TAG);
-//    }
 
 
     @Override
@@ -110,19 +110,21 @@ public class SelectImageFragment extends BaseFragment implements SelectImageMvpV
         super.onDestroyView();
     }
 
-    @Override
-    public void onSelectImage() {
 
+    @Override
+    public void ImageUploadSuccess(Response response) {
+      Log.e("UPLOAD RES:- " , ""+response);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //super method removed
         if (resultCode == RESULT_OK) {
-            if (requestCode == 1000) {
+            if (requestCode == 100) {
                 Uri returnUri = data.getData();
 
                 Log.e("URL:- " ,""+returnUri.getPath());
+
                 Bitmap bitmapImage = null;
                 try {
                     bitmapImage = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), returnUri);
@@ -130,7 +132,23 @@ public class SelectImageFragment extends BaseFragment implements SelectImageMvpV
                     e.printStackTrace();
                 }
                 selected_image.setImageBitmap(bitmapImage);
+                SelectedImagePath = getRealPathFromURI(returnUri) ;
+                selectedUri = returnUri;
             }
         }
     }
+
+
+    private String getRealPathFromURI(Uri contentUri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getActivity(), contentUri, proj, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_index);
+        cursor.close();
+        return result;
+    }
+
+
 }

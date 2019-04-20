@@ -34,7 +34,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyView
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
-        myViewHolder.name.setText(response.get(i));
+        String[] arr = response.get(i).split(":");
+        myViewHolder.name.setText(arr[0]);
+        myViewHolder.phone.setText(arr[1]);
 
     }
 
@@ -45,11 +47,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.MyView
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
+        private TextView name, phone;
 
         public MyViewHolder(View view) {
             super(view);
             name = (TextView) view.findViewById(R.id.txt_contact);
+            phone = (TextView) view.findViewById(R.id.txt_phone);
         }
     }
 

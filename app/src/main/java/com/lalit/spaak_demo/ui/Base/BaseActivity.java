@@ -33,7 +33,6 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 
     private ActivityComponent mActivityComponent;
 
-   // private Unbinder mUnBinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -143,20 +142,14 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 
     @Override
     public void openActivityOnTokenExpire() {
-       // startActivity(LoginActivity.getStartIntent(this));
-      //  finish();
+
     }
 
-//    public void setUnBinder(Unbinder unBinder) {
-//        mUnBinder = unBinder;
-//    }
+
 
     @Override
     protected void onDestroy() {
 
-//        if (mUnBinder != null) {
-//            mUnBinder.unbind();
-//        }
         super.onDestroy();
     }
 

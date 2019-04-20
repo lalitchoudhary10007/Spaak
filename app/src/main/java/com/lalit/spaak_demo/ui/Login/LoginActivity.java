@@ -35,7 +35,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPresenter.Login(ed_email.getText().toString(), ed_pass.getText().toString());
+                mPresenter.Login("admin@gmail.com", "admin@123");
             }
         });
 

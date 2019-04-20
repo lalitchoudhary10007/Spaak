@@ -1,127 +1,241 @@
 package com.lalit.spaak_demo.data.Network.model;
 
-import java.util.List;
-
 public class LoginResponse {
 
 
     /**
-     * statusCode : success
-     * status : 200
-     * message : Login Successful
-     * accessToken : eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9qZWN0cy5ib290Y2FtcC5taW5kb3Jrcy5jb20iLCJhdWQiOiJtaW5kb3Jrc19ib290Y2FtcF9zdHVkZW50cyIsInN1YiI6IjVjYjViYzhlZGRmZmNhMGIyNGZlZjU0MCIsImlhdCI6MTU1NTQxNTY3MiwiZXhwIjoxNTU4MDA3NjcyLCJwcm0iOiI3M2NlMjJiNTFmZTE0Y2Y5MzU0Y2U2YjI4ZTRjNzhhN2UyNjA5ZGEwOGY2NDcyZThmZTg2YzhhNWMxZWZlNzJmZGQwM2E4YzJhZjFmODA2M2ZjZGEyMzRjZDk0Y2IyZTY3YmM5Y2Q0ODJmMDJlZDM2YjAwZTI3YzRkY2I1MDcxZiJ9.KdOd-DweP0tsIjiY-z_IddLsZK8f2l7qPMO_FUIO8avL6nVgZIwW7iyrNw_-nJL6g6OlScF-TJ9QXkHmJEWhEA
-     * refreshToken : eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9qZWN0cy5ib290Y2FtcC5taW5kb3Jrcy5jb20iLCJhdWQiOiJtaW5kb3Jrc19ib290Y2FtcF9zdHVkZW50cyIsInN1YiI6IjVjYjViYzhlZGRmZmNhMGIyNGZlZjU0MCIsImlhdCI6MTU1NTQxNTY3MiwiZXhwIjoxNTY1NzgzNjcyLCJwcm0iOiIxZmQ5YWZlNWY3ZWE2NjE0ZTY3NWNiYWQ0ODQ5ZDExNWQ2YmVjOGU5YTk1MDRiZGZmNzY0MTUwM2ZjNDIwMmVhMTZhNDMxMTQ2YTgxZTdjZGUxYTNjZTBlM2IxOGI0ZDIyMzA4MDJiMDFiZjJmYjRjY2MxYjBhZWYwN2UzMmY3MyJ9.Wa7BGisX9_48KnoRGNrNRsE-teRHgWVN5YXKvaKoMTYnQaSXw56ODNzAi2bbgt8BbZ274q80kOkXM1XBTRgqwA
-     * userRoles : [{"_id":"5c6075712e43da0cd67c53a9","code":"LEARNER_BOOTCAMP_BATCH_1"}]
-     * userId : 5cb5bc8eddffca0b24fef540
-     * userName : lalit
-     * userEmail : lalitchoudhary503@gmail.com
+     * status : true
+     * result : {"token":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE1NTU0MDA1NzksImV4cCI6MTU1NTQwMTU3OX0.hqsK3l8ytFrxiT9NvCZ7M2siTpbeS6nffoiH3AkfJLQ","user":{"id":1,"role_id":4,"firstname":"Super","lastname":"Admin","dob":"01/10/2014","gender":"Male","email":"admin@gmail.com","phone":"9874589653","password":"$2b$10$6XJGf3eWUGK.APSSQPYtxuiJS/edTGz/Ep2xXW190eF6ue5wj81Pm","logdate":null,"lognum":null,"uuid":"f0482490-a767-11e8-8314-81c5a602d3db","is_active":true,"extra":null,"rp_token":null,"rp_token_created_at":null,"createdAt":"2018-08-24T06:35:48.000Z","updatedAt":"2018-08-24T06:35:48.000Z"}}
      */
 
-    private String statusCode;
-    private int status;
-    private String message;
-    private String accessToken;
-    private String refreshToken;
-    private String userId;
-    private String userName;
-    private String userEmail;
-    private List<UserRolesBean> userRoles;
+    private boolean status;
+    private ResultBean result;
 
-    public String getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(String statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public int getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public String getMessage() {
-        return message;
+    public ResultBean getResult() {
+        return result;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setResult(ResultBean result) {
+        this.result = result;
     }
 
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
-    public List<UserRolesBean> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(List<UserRolesBean> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    public static class UserRolesBean {
+    public static class ResultBean {
         /**
-         * _id : 5c6075712e43da0cd67c53a9
-         * code : LEARNER_BOOTCAMP_BATCH_1
+         * token : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJpYXQiOjE1NTU0MDA1NzksImV4cCI6MTU1NTQwMTU3OX0.hqsK3l8ytFrxiT9NvCZ7M2siTpbeS6nffoiH3AkfJLQ
+         * user : {"id":1,"role_id":4,"firstname":"Super","lastname":"Admin","dob":"01/10/2014","gender":"Male","email":"admin@gmail.com","phone":"9874589653","password":"$2b$10$6XJGf3eWUGK.APSSQPYtxuiJS/edTGz/Ep2xXW190eF6ue5wj81Pm","logdate":null,"lognum":null,"uuid":"f0482490-a767-11e8-8314-81c5a602d3db","is_active":true,"extra":null,"rp_token":null,"rp_token_created_at":null,"createdAt":"2018-08-24T06:35:48.000Z","updatedAt":"2018-08-24T06:35:48.000Z"}
          */
 
-        private String _id;
-        private String code;
+        private String token;
+        private UserBean user;
 
-        public String get_id() {
-            return _id;
+        public String getToken() {
+            return token;
         }
 
-        public void set_id(String _id) {
-            this._id = _id;
+        public void setToken(String token) {
+            this.token = token;
         }
 
-        public String getCode() {
-            return code;
+        public UserBean getUser() {
+            return user;
         }
 
-        public void setCode(String code) {
-            this.code = code;
+        public void setUser(UserBean user) {
+            this.user = user;
+        }
+
+        public static class UserBean {
+            /**
+             * id : 1
+             * role_id : 4
+             * firstname : Super
+             * lastname : Admin
+             * dob : 01/10/2014
+             * gender : Male
+             * email : admin@gmail.com
+             * phone : 9874589653
+             * password : $2b$10$6XJGf3eWUGK.APSSQPYtxuiJS/edTGz/Ep2xXW190eF6ue5wj81Pm
+             * logdate : null
+             * lognum : null
+             * uuid : f0482490-a767-11e8-8314-81c5a602d3db
+             * is_active : true
+             * extra : null
+             * rp_token : null
+             * rp_token_created_at : null
+             * createdAt : 2018-08-24T06:35:48.000Z
+             * updatedAt : 2018-08-24T06:35:48.000Z
+             */
+
+            private int id;
+            private int role_id;
+            private String firstname;
+            private String lastname;
+            private String dob;
+            private String gender;
+            private String email;
+            private String phone;
+            private String password;
+            private Object logdate;
+            private Object lognum;
+            private String uuid;
+            private boolean is_active;
+            private Object extra;
+            private Object rp_token;
+            private Object rp_token_created_at;
+            private String createdAt;
+            private String updatedAt;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public int getRole_id() {
+                return role_id;
+            }
+
+            public void setRole_id(int role_id) {
+                this.role_id = role_id;
+            }
+
+            public String getFirstname() {
+                return firstname;
+            }
+
+            public void setFirstname(String firstname) {
+                this.firstname = firstname;
+            }
+
+            public String getLastname() {
+                return lastname;
+            }
+
+            public void setLastname(String lastname) {
+                this.lastname = lastname;
+            }
+
+            public String getDob() {
+                return dob;
+            }
+
+            public void setDob(String dob) {
+                this.dob = dob;
+            }
+
+            public String getGender() {
+                return gender;
+            }
+
+            public void setGender(String gender) {
+                this.gender = gender;
+            }
+
+            public String getEmail() {
+                return email;
+            }
+
+            public void setEmail(String email) {
+                this.email = email;
+            }
+
+            public String getPhone() {
+                return phone;
+            }
+
+            public void setPhone(String phone) {
+                this.phone = phone;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+
+            public Object getLogdate() {
+                return logdate;
+            }
+
+            public void setLogdate(Object logdate) {
+                this.logdate = logdate;
+            }
+
+            public Object getLognum() {
+                return lognum;
+            }
+
+            public void setLognum(Object lognum) {
+                this.lognum = lognum;
+            }
+
+            public String getUuid() {
+                return uuid;
+            }
+
+            public void setUuid(String uuid) {
+                this.uuid = uuid;
+            }
+
+            public boolean isIs_active() {
+                return is_active;
+            }
+
+            public void setIs_active(boolean is_active) {
+                this.is_active = is_active;
+            }
+
+            public Object getExtra() {
+                return extra;
+            }
+
+            public void setExtra(Object extra) {
+                this.extra = extra;
+            }
+
+            public Object getRp_token() {
+                return rp_token;
+            }
+
+            public void setRp_token(Object rp_token) {
+                this.rp_token = rp_token;
+            }
+
+            public Object getRp_token_created_at() {
+                return rp_token_created_at;
+            }
+
+            public void setRp_token_created_at(Object rp_token_created_at) {
+                this.rp_token_created_at = rp_token_created_at;
+            }
+
+            public String getCreatedAt() {
+                return createdAt;
+            }
+
+            public void setCreatedAt(String createdAt) {
+                this.createdAt = createdAt;
+            }
+
+            public String getUpdatedAt() {
+                return updatedAt;
+            }
+
+            public void setUpdatedAt(String updatedAt) {
+                this.updatedAt = updatedAt;
+            }
         }
     }
 }

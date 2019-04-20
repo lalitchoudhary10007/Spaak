@@ -1,10 +1,12 @@
 package com.lalit.spaak_demo.data;
 
 import android.content.Context;
+import android.net.Uri;
 
 
 import com.androidnetworking.common.ANRequest;
 import com.lalit.spaak_demo.data.Network.ApiHelper;
+import com.lalit.spaak_demo.data.Network.model.ImageUploadResponse;
 import com.lalit.spaak_demo.data.db.DbHelper;
 import com.lalit.spaak_demo.data.prefs.PreferencesHelper;
 import com.lalit.spaak_demo.di.ApplicationContext;
@@ -15,6 +17,9 @@ import java.util.HashMap;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
 
 
 @Singleton
@@ -134,4 +139,16 @@ public class AppDataManager implements DataManager {
     public ANRequest LoginApiCall(HashMap<String, String> request_login) {
         return mApiHelper.LoginApiCall(request_login);
     }
+
+    @Override
+    public ANRequest GetAllImages(String pageNo) {
+        return mApiHelper.GetAllImages(pageNo);
+    }
+
+//    @Override
+//    public Call<ImageUploadResponse> uploadImage(RequestBody file, RequestBody desc, RequestBody eventBody, String filePath, Uri fileUri) {
+//        return null;
+//    }
+
+
 }

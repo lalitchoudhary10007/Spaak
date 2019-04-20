@@ -60,15 +60,15 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
             public void onResponse(Response okHttpResponse, LoginResponse response) {
 
                 getDataManager().updateUserInfo(
-                        response.getAccessToken(),
-                        response.getUserId(),
+                        response.getResult().getToken(),
+                        ""+response.getResult().getUser().getId(),
                         DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_IN,
-                        response.getUserName(),
-                        response.getUserEmail(),
-                        response.getRefreshToken());
+                        response.getResult().getUser().getFirstname() + " " + response.getResult().getUser().getLastname(),
+                        response.getResult().getUser().getEmail(),
+                        response.getResult().getUser().getPhone());
 
 
-                getMvpView().showMessage("Response Success");
+              //  getMvpView().showMessage("Response Success");
                 getMvpView().hideLoading();
                 getMvpView().hideKeyboard();
                 getMvpView().OpenHome();

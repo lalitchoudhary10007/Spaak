@@ -4,18 +4,8 @@ import com.lalit.spaak_demo.ui.Base.MvpView;
 
 public interface MainMvpView extends MvpView {
 
-   void OpenImageListFragment();
+    void updateUserName(String currentUserName);
 
-   void OpenAddImageFragment();
-
-   void OpenMapFragment();
-
-   void OpenContactsFragment();
-
-   void closeNavigationDrawer();
-
-   void lockDrawer();
-
-   void unlockDrawer();
+    void updateUserEmail(String currentUserEmail);
 
 }

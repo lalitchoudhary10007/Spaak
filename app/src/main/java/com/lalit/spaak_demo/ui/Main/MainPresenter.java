@@ -15,30 +15,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
 
 
     @Override
-    public void onDrawerOptionImageListClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().OpenImageListFragment();
-    }
-
-    @Override
-    public void onDrawerOptionSelectImageClick() {
-        getMvpView().closeNavigationDrawer();
-        getMvpView().OpenAddImageFragment();
-    }
-
-    @Override
-    public void onDrawerMapClick() {
-          getMvpView().closeNavigationDrawer();
-          getMvpView().OpenMapFragment();
-    }
-
-    @Override
-    public void onDrawerMyContactsClick() {
-         getMvpView().closeNavigationDrawer();
-         getMvpView().OpenContactsFragment();
-    }
-
-    @Override
     public void onViewInitialized() {
 
     }
@@ -46,5 +22,18 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     @Override
     public void onNavMenuCreated() {
 
+        if (!isViewAttached()) {
+            return;
+        }
+
+        final String currentUserName = getDataManager().getCurrentUserName();
+        if (currentUserName != null && !currentUserName.isEmpty()) {
+            getMvpView().updateUserName(currentUserName);
+        }
+
+        final String currentUserEmail = getDataManager().getCurrentUserEmail();
+        if (currentUserEmail != null && !currentUserEmail.isEmpty()) {
+            getMvpView().updateUserEmail(currentUserEmail);
+        }
     }
 }
